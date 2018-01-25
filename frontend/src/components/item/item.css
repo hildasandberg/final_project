@@ -1,0 +1,31 @@
+@media (max-width: 425px)  {
+  .one-item {
+    width: calc(100%-10px);
+    background-color: white;
+    margin: auto;
+    border-bottom: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 10px;
+  }
+  .item-name {
+    font-size: 16px;
+    /* margin-left: 10px; */
+  }
+  .item-amount {
+    font-size: 12px;
+    /* margin-left: 10px; */
+  }
+  .item-status {
+    font-size: 12px;
+    /* margin-right: 10px; */
+  }
+}
+
+  @media (min-width: 426px) and (max-width: 1024px)  {
+  }
+
+  @media (min-width: 1024) {
+  }

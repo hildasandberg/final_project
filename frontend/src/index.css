@@ -1,0 +1,37 @@
+body {
+  background-color: yellow;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+  .active {
+    display: flex;
+  }
+
+  .inactive {
+    display: none;
+  }
+
+@media (max-width: 425px)  {
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+}
+
+  @media (min-width: 426px) and (max-width: 1024px)  {
+    h1 {
+      font-size: 46px;
+    }
+
+  }
+  @media (min-width: 1024) {
+    h1 {
+      font-size: 46px;
+    }
+
+  }

@@ -1,0 +1,27 @@
+@media (max-width: 425px)  {
+  .footer-container{
+    background-color: blue;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top : 10vh;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 5;
+  }
+  .home-mode{
+    margin-left: 10%;
+  }
+  .shop-mode{
+    margin-right: 10%;
+  }
+}
+
+  @media (min-width: 426px) and (max-width: 1024px)  {
+  }
+
+  @media (min-width: 1024) {
+  }
