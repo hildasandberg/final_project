@@ -18,7 +18,7 @@ class Header extends React.Component {
       <div className="header-container">
         <div className="header-cate-container">
           {this.props.dbCategories.map(item =>
-            <button className="header-category" onClick={this.handleCategoryClick} value={item.name} >{item.name}</button>)
+            <img className="header-category" onClick={this.handleCategoryClick} value={item.name} src={item.icon} />)
           }
         </div>
         <button className="add-cate-button" onClick={this.handleAddClick}>+</button>

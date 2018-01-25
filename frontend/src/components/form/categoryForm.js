@@ -44,7 +44,6 @@ export default class CategoryForm extends React.Component {
             icon: ""
           }
         })
-        window.location.reload()
       }
     })
   }

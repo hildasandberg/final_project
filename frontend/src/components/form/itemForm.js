@@ -21,10 +21,10 @@ export default class ItemForm extends React.Component {
     }
   }
 
-  componentWillReceiveProps() {
-    if (this.props.dbCategories) {
-      console.log(this.props.dbCategories)
-      const cate = this.props.dbCategories[0]
+  componentWillReceiveProps(nextProps) {
+    if (this.props.dbCategories[0]) {
+      console.log("alla mina kategorier: ", this.props.dbCategories[0].name)
+      const cate = nextProps.dbCategories[0].name
       const { addNewItem } = this.state
       addNewItem.category = cate
       this.setState({ addNewItem })
@@ -58,10 +58,10 @@ export default class ItemForm extends React.Component {
       body: JSON.stringify(this.state.addNewItem)
     }).then(response => {
       console.log(response)
-      const newbie = this.state.addNewItem
-      this.props.gotNewItem(newbie)
       // return response.json()
       if (response.ok) {
+        const newbie = this.state.addNewItem
+        this.props.gotNewItem(newbie)
         this.setState({
           addNewItem: {
             name: "",

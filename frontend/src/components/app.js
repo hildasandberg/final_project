@@ -15,7 +15,8 @@ class App extends React.Component {
       items: [],
       itemFormActive: false,
       cateFormActive: false,
-      filterVariable: ""
+      filterVariable: "",
+      searchTerm: ""
     }
   }
 
@@ -29,7 +30,6 @@ class App extends React.Component {
       return response.json()
     }).then(json => {
       this.setState({ categories: json })
-      console.log(this.state.categories)
     })
   }
 
@@ -65,8 +65,13 @@ class App extends React.Component {
     console.log("This is the my clicked category", cate)
     this.setState({
       filterVariable: cate
-    }, () => {
-      console.log(this.state.filterVariable)
+    })
+  }
+
+  filterItems = search => {
+    console.log("search for", search)
+    this.setState({
+      searchTerm: search
     })
   }
 
@@ -81,7 +86,7 @@ class App extends React.Component {
         <div className={this.state.itemFormActive ? "active" : "inactive"}>
           <ItemForm
             dbCategories={this.state.categories}
-            addNewItem={this.gotNewItem}
+            gotNewItem={this.addNewItem}
             showItemForm={this.showItemForm} />
         </div>
 
@@ -94,9 +99,11 @@ class App extends React.Component {
         <ItemList
           listItems={this.state.items}
           showItemForm={this.showItemForm}
-          filterVariable={this.state.filterVariable} />
+          filterVariable={this.state.filterVariable}
+          searchTerm={this.state.searchTerm} />
 
-        <Footer />
+        <Footer
+          filterItems={this.filterItems} />
       </div>
     )
   }
