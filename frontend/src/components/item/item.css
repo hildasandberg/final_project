@@ -1,4 +1,4 @@
-@media (max-width: 425px)  {
+
   .one-item {
     width: calc(100%-10px);
     background-color: white;
@@ -23,7 +23,23 @@
     font-size: 12px;
     /* margin-right: 10px; */
   }
-}
+
+  .one-item input {
+    visibility: hidden;
+  }
+
+  .one-item .fas {
+    color: #cacaca;
+    font-size: 24px;
+  }
+
+  .home-container input:checked + .fa-home {
+    color: green;
+  }
+
+  .shop-container input:checked + .fa-shopping-cart {
+    color: red;
+  }
 
   @media (min-width: 426px) and (max-width: 1024px)  {
   }

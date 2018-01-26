@@ -1,7 +1,7 @@
 @media (max-width: 425px)  {
   .footer-container{
     background-color: blue;
-    width: 100%;
+    width: 100vw;
     height: 10vh;
     display: flex;
     justify-content: space-between;

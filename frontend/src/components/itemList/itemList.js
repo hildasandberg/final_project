@@ -8,14 +8,9 @@ class ItemList extends React.Component {
     this.props.showItemForm()
   }
 
-  // filterItems = event => {
-  //   console.log("trying to search for", event.target.value)
-  //   console.log(this.state.toDoItems.includes(event.target.value))
-  //   this.setState({
-  //     filteredList: this.state.toDoItems.filter(todo => todo.includes(event.target.value))
-  //   })
-  //   console.log("this is search result", this.state.filteredList)
-  // }
+  checkItem = (identity, keyToUpdate) => {
+    this.props.checkItem(identity, keyToUpdate)
+  }
 
   render() {
     let itemsToRender = this.props.listItems
@@ -26,15 +21,17 @@ class ItemList extends React.Component {
     }
 
     if (this.props.searchTerm) {
-      console.log("är i itemList och söker på", this.props.searchTerm)
+      const searchFor = this.props.searchTerm.toUpperCase()
       itemsToRender = itemsToRender.filter(item =>
-        item.name.includes(this.props.searchTerm))
+        item.name.toUpperCase().includes(searchFor))
     }
 
     return (
       <div className="item-in-list">
         {itemsToRender.map(item =>
-          <Item item={item} />)}
+          <Item
+            item={item}
+            itemCheck={this.checkItem} />)}
         <button className="add-item-button" onClick={this.handleAddClick}>+</button>
       </div>
     )

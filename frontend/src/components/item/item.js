@@ -29,11 +29,13 @@ export default class ItemForm extends React.Component {
     console.log("The item was checked ", event.target.name)
     const { item } = this.state
     item[event.target.name] = !item[event.target.name]
+    const keyToUpdate =  event.target.name
     this.setState(
       { item },
       () => {
         console.log("The item", this.state.item)
         const identity = this.state.item._id
+        this.props.itemCheck(identity, keyToUpdate)
         fetch(`http://localhost:8080/items/${identity}`, {
           method: "PUT",
           headers: {
@@ -58,22 +60,31 @@ export default class ItemForm extends React.Component {
         </div>
 
         <div className="item-status">
-          <div>Got at home?
-          <input
-            name="got"
-            className="check"
-            type="checkbox"
-            checked={this.state.item.got}
-            onChange={this.handleCheck} />
+
+          <div className="home-container">
+            <label className="home-label">
+              <input
+                className="home-input"
+                name="got"
+                type="checkbox"
+                checked={this.state.item.got}
+                onChange={this.handleCheck} />
+              <i className="fas fa-home" />
+            </label>
           </div>
-          <div>Need to buy?
-          <input
-            name="buy"
-            className="check"
-            type="checkbox"
-            checked={this.state.item.buy}
-            onChange={this.handleCheck} />
+
+          <div className="shop-container">
+            <label className="shop-label">
+              <input
+                className="buy-input"
+                name="buy"
+                type="checkbox"
+                checked={this.state.item.buy}
+                onChange={this.handleCheck} />
+              <i className="fas fa-shopping-cart" />
+            </label>
           </div>
+
         </div>
       </div>
     )

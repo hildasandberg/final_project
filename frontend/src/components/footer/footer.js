@@ -4,13 +4,8 @@ import "./footer.css"
 class Footer extends React.Component {
 
   filterItems = event => {
-    console.log("trying to search for", event.target.value)
+    // console.log("trying to search for", event.target.value)
     this.props.filterItems(event.target.value)
-    // console.log(this.state.toDoItems.includes(event.target.value))
-    // this.setState({
-    //   filteredList: this.state.toDoItems.filter(todo => todo.includes(event.target.value))
-    // })
-    // console.log("this is search result", this.state.filteredList)
   }
 
   render() {

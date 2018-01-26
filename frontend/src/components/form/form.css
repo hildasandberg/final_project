@@ -1,13 +1,15 @@
-@media (max-width: 425px)  {
-  form {
-    width: 80vw;
-    background-color: pink;
-    margin-left: 10vw;
-  }
+form {
+  width: 80vw;
+  background-color: pink;
+  margin-left: 10vw;
 }
 
-  @media (min-width: 426px) and (max-width: 1024px)  {
-  }
+select {
+  width: 80vw;
+}
 
-  @media (min-width: 1024) {
-  }
+@media (min-width: 426px) and (max-width: 1024px)  {
+}
+
+@media (min-width: 1024) {
+}

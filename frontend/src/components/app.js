@@ -34,14 +34,12 @@ class App extends React.Component {
   }
 
   showItemForm = () => {
-    console.log("tryckte på plusset")
     this.setState({
       itemFormActive: !this.state.itemFormActive
     })
   }
 
   showCateForm = () => {
-    console.log("tryckte på plusset")
     this.setState({
       cateFormActive: !this.state.cateFormActive
     })
@@ -61,15 +59,19 @@ class App extends React.Component {
     })
   }
 
+  itemCheck = (itemIdentity, keyToUpdate) => {
+    console.log("tjena", itemIdentity, keyToUpdate)
+    const foundItem = this.state.items.find(item => item._id === itemIdentity)
+    console.log(foundItem[keyToUpdate])
+  }
+
   categoryClick = cate => {
-    console.log("This is the my clicked category", cate)
     this.setState({
       filterVariable: cate
     })
   }
 
   filterItems = search => {
-    console.log("search for", search)
     this.setState({
       searchTerm: search
     })
@@ -83,6 +85,12 @@ class App extends React.Component {
           showCateForm={this.showCateForm}
           categoryClick={this.categoryClick} />
 
+          <div className={this.state.cateFormActive ? "active" : "inactive"}>
+            <CategoryForm
+              gotNewCate={this.addNewCate}
+              showCateForm={this.showCateForm} />
+          </div>
+          
         <div className={this.state.itemFormActive ? "active" : "inactive"}>
           <ItemForm
             dbCategories={this.state.categories}
@@ -90,17 +98,12 @@ class App extends React.Component {
             showItemForm={this.showItemForm} />
         </div>
 
-        <div className={this.state.cateFormActive ? "active" : "inactive"}>
-          <CategoryForm
-            gotNewCate={this.addNewCate}
-            showCateForm={this.showCateForm} />
-        </div>
-
         <ItemList
           listItems={this.state.items}
           showItemForm={this.showItemForm}
           filterVariable={this.state.filterVariable}
-          searchTerm={this.state.searchTerm} />
+          searchTerm={this.state.searchTerm}
+          checkItem={this.itemCheck} />
 
         <Footer
           filterItems={this.filterItems} />

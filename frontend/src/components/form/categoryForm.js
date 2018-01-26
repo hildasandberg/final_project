@@ -1,7 +1,17 @@
 import React from "react"
 import "./form.css"
 
-const categoryIcon = ["https://image.flaticon.com/icons/svg/135/135620.svg", "http://clubpenguin.wikia.com/wiki/File:Fridge_icon.png", "https://d30y9cdsu7xlg0.cloudfront.net/png/76181-200.png", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSPfD_RTrGMJjNxWe85aOYzPciy6IlmZ5lSuALZwEaTZikM5Qx8w", "https://cdn.xl.thumbs.canstockphoto.se/produkt-isometric-stil-mejeri-ikon-vektor-clip-art_csp50027313.jpg"]
+const categoryIcon = [
+  "/images/can.png",
+  "/images/carrot.png",
+  "/images/chocolate.png",
+  "/images/coffee.png",
+  "/images/fridge.png",
+  "/images/hazelnut.png",
+  "/images/milk.png",
+  "/images/pepper.png",
+  "/images/wheat.png"
+]
 
 export default class CategoryForm extends React.Component {
 
@@ -35,6 +45,7 @@ export default class CategoryForm extends React.Component {
     }).then(response => {
       console.log(response)
       const newbie = this.state.addNewCategory
+      console.log("ny kategori", newbie)
       this.props.gotNewCate(newbie)
       // return response.json()
       if (response.ok) {
