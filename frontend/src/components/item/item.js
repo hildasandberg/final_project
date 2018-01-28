@@ -11,8 +11,8 @@ export default class ItemForm extends React.Component {
       category: "",
       amount: "",
       unit: "",
-      got: "",
-      buy: "",
+      got: false,
+      buy: false,
       _id: ""
     }
 
@@ -53,7 +53,8 @@ export default class ItemForm extends React.Component {
       <div className="one-item">
         <div className="item-summary">
           <div className="item-name">
-          {this.props.item.name}</div>
+            {this.props.item.name}
+          </div>
           <div className="item-amount">
             <div>{this.props.item.amount} {this.props.item.unit}</div>
           </div>

@@ -19,7 +19,7 @@ mongoose.connection.once("open", () => console.log("Connected to mongodb"))
 const Item = mongoose.model("Item", {
   name: String,
   category: String,
-  amount: Number,
+  amount: String,
   unit: String,
   got: Boolean,
   buy: Boolean
@@ -34,16 +34,16 @@ const Category = mongoose.model("Category", {
 app.post("/categories", (req, res) => {
   const category = new Category(req.body)
   category.save()
-    .then(() => { res.status(201).send({answer: "Category added"}) })
-    .catch(err => { res.status(400).send(err)} )
+    .then(() => { res.status(201).send({ answer: "Category added" }) })
+    .catch(err => { res.status(400).send(err) })
 })
 
 // Endpoint for posting an item
 app.post("/items", (req, res) => {
   const item = new Item(req.body)
   item.save()
-    .then(() => { res.status(201).send({answer: "Item added"}) })
-    .catch(err => { res.status(400).send(err)} )
+    .then(() => { res.status(201).send({ answer: "Item added" }) })
+    .catch(err => { res.status(400).send(err) })
 })
 
 // Endpoint for put an item (update an item)
@@ -51,8 +51,8 @@ app.put("/items/:id", (req, res) => {
   const condition = { _id: req.params.id }
   console.log(condition, req.body)
   Item.update(condition, req.body)
-    .then(() => { res.status(201).send( {answer: "item updated in Mongodb"}) })
-    .catch(err => { res.status(400).send(err)} )
+    .then(() => { res.status(201).send({ answer: "item updated in Mongodb" }) })
+    .catch(err => { res.status(400).send(err) })
 })
 
 // Endpoint for getting all categories

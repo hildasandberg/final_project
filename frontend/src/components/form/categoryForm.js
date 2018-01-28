@@ -49,6 +49,7 @@ export default class CategoryForm extends React.Component {
       this.props.gotNewCate(newbie)
       // return response.json()
       if (response.ok) {
+        console.log("Svaret OK", response.ok)
         this.setState({
           addNewCategory: {
             name: "",
@@ -61,36 +62,38 @@ export default class CategoryForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <button className="close-btn" onClick={this.props.showCateForm}> Close </button>
+      <div className="page-darker">
+        <div className="item-form-container">
+          <button className="close-btn" onClick={this.props.showCateForm}> Close </button>
 
-        <form onSubmit={this.handleSubmit} className={`form-container ${this.props.type}`}>
+          <form onSubmit={this.handleSubmit} className="item-form">
 
-          <div>
-            <input
-              type="text"
-              name="name"
-              placeholder="category name"
-              value={this.state.name}
-              onChange={this.handleInput} />
-          </div>
+            <div>
+              <input
+                type="text"
+                name="name"
+                placeholder="category name"
+                value={this.state.addNewCategory.name}
+                onChange={this.handleInput} />
+            </div>
 
-          <div
-            className="inputIcon"
-            value={this.state.addNewCategory.icon}
-            onChange={this.handleInput}>
-            Choose an icon:
-            <select className="selectIcon" name="icon">
-              {categoryIcon.map(icon =>
-                <option value={icon}>{icon}</option>)
-              }
-            </select>
-          </div>
+            <div
+              className="inputIcon"
+              value={this.state.addNewCategory.icon}
+              onChange={this.handleInput}>
+              Choose an icon:
+              <select className="selectIcon" name="icon">
+                {categoryIcon.map(icon =>
+                  <option key={icon} value={icon}>{icon}</option>)
+                }
+              </select>
+            </div>
 
-          <div>
-            <input className="submit-btn" type="submit" value="Send" />
-          </div>
-        </form>
+            <div>
+              <input className="submit-btn" type="submit" value="Send" />
+            </div>
+          </form>
+        </div>
       </div>
     )
   }

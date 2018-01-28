@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import "./footer.css"
 
 class Footer extends React.Component {
@@ -11,9 +12,13 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footer-container">
-        <div className="home-mode"> Home </div>
+        <Link to="/">
+          <div className="home-mode"> Home </div>
+        </Link>
         <input type="text" className="search-items" placeholder="search" onChange={this.filterItems} />
-        <div className="shop-mode"> Shop </div>
+        <Link to="/shopping-mode">
+          <div className="shop-mode"> Shop </div>
+        </Link>
       </div>
     )
   }

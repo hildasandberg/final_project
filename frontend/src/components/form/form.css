@@ -1,11 +1,47 @@
-form {
-  width: 80vw;
-  background-color: pink;
-  margin-left: 10vw;
+.page-darker {
+  width: 100vw;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4000;
 }
 
-select {
-  width: 80vw;
+.item-form-container, .category-form-container {
+  width: 60vw;
+  padding: 10vw;
+  background-color: pink;
+  margin-left: 10vw;
+  position: absolute;
+  z-index: 5000;
+}
+
+.item-form-container {
+  top: 30vh;
+}
+
+.category-form-container {
+  bottom: 30vh;
+}
+
+
+.item-form {
+}
+
+.item-form-container input {
+  width: 100%;
+  height: 10vw;
+}
+
+.selectIcon {
+  width: 100%;
+  height: 10vw;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 10vw;
 }
 
 @media (min-width: 426px) and (max-width: 1024px)  {
