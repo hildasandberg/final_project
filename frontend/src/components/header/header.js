@@ -36,7 +36,7 @@ class Header extends React.Component {
 
     return (
       <div className="header-container">
-        <div className="app-name"> Pantri </div>
+        <div className={`app-name ${this.props.backgroundHome ? "header-home-mode" : "header-shop-mode"} `}> Pantri </div>
         <div className="header-cate-container">
           {categories.map((item, index) =>
             <div className="one-cate">

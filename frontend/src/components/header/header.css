@@ -21,6 +21,10 @@
   background-color: #009688;
 }
 
+.header-home-mode {
+  background-color: white; /* #ecedef; */
+  color: #009688;
+}
 .header-cate-container {
   margin-top: 8vh;
   display: flex;
@@ -28,15 +32,10 @@
   text-align: center;
 }
 
-.header-cate-container p {
-  display: inline;
-  font-size: 8px;
-  width: 20%;
-}
-
 .one-cate p {
   font-size: 12px;
   display: block;
+  color: gray;
 }
 
 .one-cate-image {
@@ -63,8 +62,8 @@
   height: 5vw;
   border: 0;
   font-size: 12px;
-  color: white;
-  background-color: #009688;
+  color: #009688;
+  background-color: white;
 }
 
 /* .clear-cate-button {

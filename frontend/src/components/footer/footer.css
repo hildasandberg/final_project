@@ -20,23 +20,30 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009688', endColorstr='#ecedef',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.home-mode{
+.home-mode {
   font-family: 'Dosis', sans-serif;
   margin-left: 10vw;
   font-size: 16px;
   color: white;
+  background-color: #009688;
+  border: 0;
 }
-.shop-mode{
+.shop-mode {
   font-family: 'Dosis', sans-serif;
   margin-right: 10vw;
   font-size: 16px;
   color: black;
+  background-color: #ecedef;
+  border: 0;
 }
 .search-items {
   font-family: 'Dosis', sans-serif;
   width: 90px;
   font-size: 16px;
   color: black;
+  background-color: white;
+  border: 0;
+  padding: 3px;
 }
 
 

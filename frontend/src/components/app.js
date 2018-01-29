@@ -45,6 +45,13 @@ class App extends React.Component {
     })
   }
 
+  // Toggles background of app from green to gray
+  toggleAppBackground = () => {
+    this.setState({
+      backgroundHome: !this.state.backgroundHome
+    })
+  }
+
   // Toggles visibility of the form for adding items
   showItemForm = () => {
     this.setState({
@@ -147,12 +154,13 @@ class App extends React.Component {
     }
     return (
       <BrowserRouter>
-        <div className="app-container">
+        <div className={`app-container ${this.state.backgroundHome ? "app-home-mode" : "app-shop-mode"} `}>
           <Header
             dbCategories={this.state.categories}
             fiveCategories={fiveCategories}
             showCateForm={this.showCateForm}
-            categoryClick={this.categoryClick} />
+            categoryClick={this.categoryClick}
+            backgroundHome={this.state.backgroundHome} />
 
           <div className={this.state.cateFormActive ? "active" : "inactive"}>
             <CategoryForm
@@ -205,7 +213,9 @@ class App extends React.Component {
             } />
 
           <Footer
-            filterItems={this.filterItems} />
+            filterItems={this.filterItems}
+            toggleAppBackground={this.toggleAppBackground} />
+
         </div>
       </BrowserRouter>
     )

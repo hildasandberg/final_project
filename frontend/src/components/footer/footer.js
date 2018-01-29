@@ -13,11 +13,11 @@ class Footer extends React.Component {
     return (
       <div className="footer-container">
         <Link to="/">
-          <button className="home-mode"> Home </button>
+          <button className="home-mode" onClick={this.props.toggleAppBackground}> Home </button>
         </Link>
-        <input type="text" className="search-items" placeholder="search" onChange={this.filterItems} />
+        <input type="text" className="search-items" placeholder="Search..." onChange={this.filterItems} />
         <Link to="/shopping-mode">
-          <button className="shop-mode"> Shop </button>
+          <button className="shop-mode" onClick={this.props.toggleAppBackground}> Shop </button>
         </Link>
       </div>
     )
