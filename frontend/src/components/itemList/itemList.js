@@ -15,25 +15,28 @@ class ItemList extends React.Component {
   render() {
     let itemsToRender = this.props.listItems
 
+    // Filter the ones that have buy = true
     if (this.props.mode === "shopping-mode") {
       itemsToRender = itemsToRender.filter(item =>
         item.buy)
+      // Filter category
       if (this.props.filterVariable) {
         itemsToRender = itemsToRender.filter(item =>
           item.category === this.props.filterVariable)
       }
-
+      // Filter on searchterm
       if (this.props.searchTerm) {
         const searchFor = this.props.searchTerm.toUpperCase()
         itemsToRender = itemsToRender.filter(item =>
           item.name.toUpperCase().includes(searchFor))
       }
     } else {
+      // Filter on category
       if (this.props.filterVariable) {
         itemsToRender = itemsToRender.filter(item =>
           item.category === this.props.filterVariable)
       }
-
+      // Filter on searchterm
       if (this.props.searchTerm) {
         const searchFor = this.props.searchTerm.toUpperCase()
         itemsToRender = itemsToRender.filter(item =>
@@ -47,7 +50,8 @@ class ItemList extends React.Component {
           <Item
             key={item._id}
             item={item}
-            itemCheck={this.checkItem} />)}
+            itemCheck={this.checkItem}
+            showItemChangeForm={this.props.showItemChangeForm} />)}
         <button className="add-item-button" onClick={this.handleAddClick}>+</button>
       </div>
     )

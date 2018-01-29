@@ -36,24 +36,26 @@ class Header extends React.Component {
 
     return (
       <div className="header-container">
+        <div className="app-name"> Pantri </div>
         <div className="header-cate-container">
           {categories.map((item, index) =>
             <div className="one-cate">
-              <img
-                className="header-category"
+              <div className="one-cate-image">
+                <img
                 key={item._id}
                 onClick={this.handleCategoryClick}
                 name={item.name}
                 alt={item.name}
                 src={item.icon}
                 data-message={index} />
+              </div>
               <p>{item.name}</p>
             </div>)
           }
         </div>
         <div className="header-button-container">
           <button className="clear-cate-button" onClick={this.handleCategoryClick} name="" >Show all</button>
-          <button className="add-cate-button" onClick={this.handleAddClick}>+</button>
+          <button className="add-cate-button" onClick={this.handleAddClick}> Add category </button>
         </div>
       </div>
     )

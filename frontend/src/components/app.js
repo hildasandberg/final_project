@@ -2,6 +2,7 @@ import React from "react"
 import { BrowserRouter, Route, Link } from "react-router-dom"
 import ItemForm from "components/form/itemForm.js"
 import CategoryForm from "components/form/categoryForm.js"
+import ChangeItemForm from "components/form/changeItemForm"
 import ItemList from "components/itemList/itemList.js"
 import Footer from "components/footer/footer"
 import Header from "components/header/header"
@@ -19,8 +20,11 @@ class App extends React.Component {
       items: [],
       itemFormActive: false,
       cateFormActive: false,
+      changeItemFormActive: false,
       filterVariable: "",
-      searchTerm: ""
+      searchTerm: "",
+      itemToChange: "",
+      backgroundHome: true
     }
   }
 
@@ -52,6 +56,19 @@ class App extends React.Component {
   showCateForm = () => {
     this.setState({
       cateFormActive: !this.state.cateFormActive
+    })
+  }
+
+  // Toggles visibility of the form for changing items
+  showItemChangeForm = item => {
+    this.setState({
+      itemToChange: item
+      // changeItemFormActive: !this.state.changeItemFormActive
+    }, () => {
+      console.log("denna ska ändras i app", this.state.itemToChange)
+      this.setState({
+        changeItemFormActive: !this.state.changeItemFormActive
+      })
     })
   }
 
@@ -150,6 +167,13 @@ class App extends React.Component {
               showItemForm={this.showItemForm} />
           </div>
 
+          <div className={this.state.changeItemFormActive ? "active" : "inactive"}>
+            <ChangeItemForm
+              dbCategories={this.state.categories}
+              gotChangeItem={this.state.itemToChange}
+              showChangeItemForm={this.showChangeItemForm} />
+          </div>
+
           <Route
             exact
             path="/"
@@ -159,6 +183,7 @@ class App extends React.Component {
                 mode="home-mode"
                 listItems={this.state.items}
                 showItemForm={this.showItemForm}
+                showItemChangeForm={this.showItemChangeForm}
                 filterVariable={this.state.filterVariable}
                 searchTerm={this.state.searchTerm}
                 checkItem={this.itemCheck} />
@@ -173,6 +198,7 @@ class App extends React.Component {
                 mode="shopping-mode"
                 listItems={this.state.items}
                 showItemForm={this.showItemForm}
+                showItemChangeForm={this.showItemChangeForm}
                 filterVariable={this.state.filterVariable}
                 searchTerm={this.state.searchTerm}
                 checkItem={this.itemCheck} />

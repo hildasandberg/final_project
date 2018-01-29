@@ -25,6 +25,17 @@ export default class ItemForm extends React.Component {
     }
   }
 
+  // Change information about an item
+  changeItem = (item, event) => {
+    // console.log("you clicked to change:", item)
+    this.props.showItemChangeForm(item)
+    // add the information to the change form
+    // save changes in temporary itemobject
+    // find and replace the item in server
+    // find and replace the item in app.state.items
+  }
+
+  // Change the value of got or buy to the opposite, change in app and change in server
   handleCheck = event => {
     console.log("The item was checked ", event.target.name)
     const { item } = this.state
@@ -48,11 +59,14 @@ export default class ItemForm extends React.Component {
     )
   }
 
+  // <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
+  // <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+
   render() {
     return (
       <div className="one-item">
         <div className="item-summary">
-          <div className="item-name">
+          <div className="item-name"  onClick={(e) => this.changeItem(this.props.item, e)} >
             {this.props.item.name}
           </div>
           <div className="item-amount">

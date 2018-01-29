@@ -2,37 +2,43 @@
   width: calc(100%-10px);
   background-color: white;
   margin: auto;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: 14px;
   padding: 10px;
+  border-bottom: 0.5px solid #cacaca;
 }
+
 .item-name {
-  font-size: 16px;
-  /* margin-left: 10px; */
+    font-size: 16px;
+  color: gray;
 }
-.item-amount {
+.item-amount, .item-status {
   font-size: 12px;
-  /* margin-left: 10px; */
-}
-.item-status {
-  font-size: 12px;
-  /* margin-right: 10px; */
+  color: gray;
 }
 
 .one-item input {
   visibility: hidden;
+  display: none;
 }
 
 .one-item .fas {
   color: #cacaca;
   font-size: 24px;
+  margin-left: 15px;
 }
 
+.item-status {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 .home-container input:checked + .fa-home {
-  color: #74b574;
+  color: #009688;
 }
 
 .shop-container input:checked + .fa-shopping-cart {

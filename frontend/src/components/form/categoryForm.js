@@ -69,6 +69,7 @@ export default class CategoryForm extends React.Component {
           <form onSubmit={this.handleSubmit} className="item-form">
 
             <div>
+              Category name:
               <input
                 type="text"
                 name="name"
@@ -90,7 +91,7 @@ export default class CategoryForm extends React.Component {
             </div>
 
             <div>
-              <input className="submit-btn" type="submit" value="Send" />
+              <button className="submit-btn" type="submit"> Add Category </button>
             </div>
           </form>
         </div>

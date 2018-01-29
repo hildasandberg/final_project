@@ -3,15 +3,19 @@ import "./form.css"
 
 const units = ["pcs", "g", "hg", "kg", "l", "dl", "ml", "bag", "bottle"]
 
-export default class ItemForm extends React.Component {
+export default class ChangeItemForm extends React.Component {
 
   constructor(props) {
     super(props)
 
+    if (this.props.gotChangeItem) {
+      console.log("halloooo", this.props.gotChangeItem)
+    }
+
     this.state = {
       // categories: cate,
       addNewItem: {
-        name: "",
+        name: this.props.gotChangeItem.name,
         category: "",
         amount: "",
         unit: "",
@@ -21,32 +25,13 @@ export default class ItemForm extends React.Component {
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.dbCategories[0]) {
-  //     console.log("alla mina kategorier: ", this.props.dbCategories[0].name)
-  //     const cate = nextProps.dbCategories[0].name
-  //     const { addNewItem } = this.state
-  //     addNewItem.category = cate
-  //     this.setState({ addNewItem })
-  //   }
-  // }
-
   handleInput = event => {
     const { addNewItem } = this.state
     addNewItem[event.target.name] = event.target.value
     this.setState({ addNewItem })
   }
 
-  handleCheck = event => {
-    console.log("The item was checked ", event.target.name)
-    const { addNewItem } = this.state
-    addNewItem[event.target.name] = !addNewItem[event.target.name]
-    this.setState({ addNewItem })
-    // , () => {
-    //   this.props.checkItem(this.props.id, this.state.done)
-    // }
-  }
-
+  // Ändra denna till en put.
   handleSubmit = event => {
     console.log("Submittar form och vill skicka", this.state.addNewItem)
     event.preventDefault()
@@ -80,16 +65,15 @@ export default class ItemForm extends React.Component {
   render() {
     return (
       <div className="page-darker">
-        <div className="item-form-container">
-          <button className="close-btn" onClick={this.props.showItemForm}> Close </button>
+        <div className="category-form-container">
+          <button className="close-btn" onClick={this.props.showChangeItemForm}> Close </button>
 
           <form onSubmit={this.handleSubmit} className={`form-container ${this.props.type}`}>
             <div>
-              Name:
               <input
                 type="text"
                 name="name"
-                placeholder="Item name"
+                placeholder="Add you item here"
                 value={this.state.addNewItem.name}
                 onChange={this.handleInput} />
             </div>
@@ -106,7 +90,6 @@ export default class ItemForm extends React.Component {
               </select>
             </div>
 
-            Amount:
             <input
               type="text"
               name="amount"
@@ -124,34 +107,24 @@ export default class ItemForm extends React.Component {
               </select>
             </div>
 
-            <div className="form-item-status">
-              <div className="home-container">
-                <label className="home-label">
-                  <input
-                    className="home-input"
-                    name="got"
-                    type="checkbox"
-                    checked={this.state.addNewItem.got}
-                    onChange={this.handleCheck} />
-                  <i className="fas fa-home" />
-                </label>
-              </div>
+            Got this at home?
+            <input
+              className="gotAtHome"
+              name="got"
+              type="checkbox"
+              checked={this.state.addNewItem.got}
+              onChange={this.handleCheck} />
 
-              <div className="shop-container">
-                <label className="shop-label">
-                  <input
-                    className="buy-input"
-                    name="buy"
-                    type="checkbox"
-                    checked={this.state.addNewItem.buy}
-                    onChange={this.handleCheck} />
-                  <i className="fas fa-shopping-cart" />
-                </label>
-              </div>
-            </div>
+            Need to buy?
+            <input
+              className="toBuy"
+              name="buy"
+              type="checkbox"
+              checked={this.state.addNewItem.buy}
+              onChange={this.handleCheck} />
 
             <div>
-              <button className="submit-btn" type="submit"> Add item </button>
+              <input className="submit-btn" type="submit" value="Send" />
             </div>
           </form>
         </div>
