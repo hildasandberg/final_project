@@ -9,15 +9,32 @@ class Footer extends React.Component {
     this.props.filterItems(event.target.value)
   }
 
+  changeMode = event => {
+    this.props.toggleAppBackground(event.target.className)
+  }
+
   render() {
     return (
-      <div className="footer-container">
+      <div className={`footer-container ${this.props.backgroundHome ? "footer-home-mode" : "footer-shop-mode"} `}>
         <Link to="/">
-          <button className="home-mode" onClick={this.props.toggleAppBackground}> Home </button>
+          <button
+            onClick={this.changeMode}
+            className="home-mode">
+            Home
+          </button>
         </Link>
-        <input type="text" className="search-items" placeholder="Search..." onChange={this.filterItems} />
+
+        <input
+          type="text"
+          className="search-items"
+          placeholder="Search..."
+          onChange={this.filterItems} />
+
         <Link to="/shopping-mode">
-          <button className="shop-mode" onClick={this.props.toggleAppBackground}> Shop </button>
+          <button
+            onClick={this.changeMode}
+            className="shop-mode"> Shop
+          </button>
         </Link>
       </div>
     )

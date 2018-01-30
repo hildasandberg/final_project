@@ -12,7 +12,16 @@
   z-index: 5;
 }
 
+/*  "footer-home-mode" : "footer-shop-mode" */
 .footer-container {
+  background: #009688; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #009688 0%, #009688 50%, #ecedef 50%, #ecedef 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #009688 0%,#009688 50%,#ecedef 50%,#ecedef 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #009688 0%,#009688 50%,#ecedef 50%,#ecedef 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009688', endColorstr='#ecedef',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.footer-shop-mode {
   background: #009688; /* Old browsers */
   background: -moz-linear-gradient(45deg, #009688 0%, #009688 50%, #ecedef 50%, #ecedef 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(45deg, #009688 0%,#009688 50%,#ecedef 50%,#ecedef 100%); /* Chrome10-25,Safari5.1-6 */

@@ -1,5 +1,6 @@
 import React from "react"
 import { BrowserRouter, Route, Link } from "react-router-dom"
+import { CSSTransitionGroup } from 'react-transition-group'
 import ItemForm from "components/form/itemForm.js"
 import CategoryForm from "components/form/categoryForm.js"
 import ChangeItemForm from "components/form/changeItemForm"
@@ -24,7 +25,7 @@ class App extends React.Component {
       filterVariable: "",
       searchTerm: "",
       itemToChange: "",
-      backgroundHome: true
+      homeMode: true
     }
   }
 
@@ -45,11 +46,17 @@ class App extends React.Component {
     })
   }
 
-  // Toggles background of app from green to gray
-  toggleAppBackground = () => {
-    this.setState({
-      backgroundHome: !this.state.backgroundHome
-    })
+  // // Toggles mode of app from home to shop and background from green to gray
+  toggleAppMode= mode => {
+    if (mode === "home-mode") {
+      this.setState({
+        homeMode: true
+      })
+    } else if (mode === "shop-mode") {
+      this.setState({
+        homeMode: false
+      })
+    }
   }
 
   // Toggles visibility of the form for adding items
@@ -154,13 +161,13 @@ class App extends React.Component {
     }
     return (
       <BrowserRouter>
-        <div className={`app-container ${this.state.backgroundHome ? "app-home-mode" : "app-shop-mode"} `}>
+        <div className={`app-container ${this.state.homeMode ? "app-home-mode" : "app-shop-mode"} `}>
           <Header
             dbCategories={this.state.categories}
             fiveCategories={fiveCategories}
             showCateForm={this.showCateForm}
             categoryClick={this.categoryClick}
-            backgroundHome={this.state.backgroundHome} />
+            backgroundHome={this.state.homeMode} />
 
           <div className={this.state.cateFormActive ? "active" : "inactive"}>
             <CategoryForm
@@ -214,7 +221,8 @@ class App extends React.Component {
 
           <Footer
             filterItems={this.filterItems}
-            toggleAppBackground={this.toggleAppBackground} />
+            toggleAppBackground={this.toggleAppMode}
+            backgroundHome={this.state.homeMode} />
 
         </div>
       </BrowserRouter>

@@ -7,24 +7,51 @@
   top: 0;
 }
 
+@keyframes greenToWhite {
+  from {
+    background-color: #009688;
+    color: white;
+  }
+  to {
+    background-color: white;
+    color: #009688;
+  }
+}
+
+@keyframes whiteToGreen {
+  from {
+    background-color: white;
+    color: #009688;
+  }
+  to {
+    background-color: #009688;
+    color: white;
+  }
+}
+
 .app-name {
   font-family: 'Libre Barcode 39 Text', cursive;
   text-align: center;
   font-size: 36px;
   padding: 7px;
   position: fixed;
-  z-index: 6000;
+  z-index: 3000;
   width: 100%;
   height: 5vh;
   color: white;
   margin-bottom: 15px;
   background-color: #009688;
+  animation-name: whiteToGreen;
+  animation-duration: 1s;
 }
 
 .header-home-mode {
   background-color: white; /* #ecedef; */
   color: #009688;
+  animation-name: greenToWhite;
+  animation-duration: 1s;
 }
+
 .header-cate-container {
   margin-top: 8vh;
   display: flex;

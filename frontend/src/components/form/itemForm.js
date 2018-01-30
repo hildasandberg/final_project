@@ -1,7 +1,7 @@
 import React from "react"
 import "./form.css"
 
-const units = ["pcs", "g", "hg", "kg", "l", "dl", "ml", "bag", "bottle"]
+const units = ["Choose a unit", "pcs", "g", "hg", "kg", "l", "dl", "ml", "bag", "bottle"]
 
 export default class ItemForm extends React.Component {
 
