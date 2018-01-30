@@ -53,10 +53,12 @@
 }
 
 .header-cate-container {
-  margin-top: 8vh;
-  display: flex;
-  flex-direction: row;
-  text-align: center;
+  margin: auto;
+  width: 80%;
+  height: 16vh;
+  position: relative;
+  margin-top: 12vh;
+  margin-bottom: 2vh;
 }
 
 .one-cate p {

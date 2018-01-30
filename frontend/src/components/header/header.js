@@ -1,4 +1,5 @@
 import React from "react"
+import Slider from "react-slick"
 import "./header.css"
 
 class Header extends React.Component {
@@ -34,24 +35,33 @@ class Header extends React.Component {
       categories = this.props.dbCategories
     }
 
+    const settings = {
+      infinite: true,
+      speed: 500,
+      slidesToShow: 5,
+      slidesToScroll: 1
+    }
+
     return (
       <div className="header-container">
         <div className={`app-name ${this.props.backgroundHome ? "header-home-mode" : "header-shop-mode"} `}> Pantri </div>
         <div className="header-cate-container">
-          {categories.map((item, index) =>
-            <div className="one-cate">
-              <div className="one-cate-image">
-                <img
-                key={item._id}
-                onClick={this.handleCategoryClick}
-                name={item.name}
-                alt={item.name}
-                src={item.icon}
-                data-message={index} />
-              </div>
-              <p>{item.name}</p>
-            </div>)
-          }
+          <Slider {...settings}>
+            {this.props.dbCategories.map((item, index) =>
+              <div className="one-cate">
+                <div className="one-cate-image">
+                  <img
+                  key={item._id}
+                  onClick={this.handleCategoryClick}
+                  name={item.name}
+                  alt={item.name}
+                  src={item.icon}
+                  data-message={index} />
+                </div>
+                <p>{item.name}</p>
+              </div>)
+            }
+          </Slider>
         </div>
         <div className="header-button-container">
           <button className="clear-cate-button" onClick={this.handleCategoryClick} name="" >Show all</button>

@@ -16,8 +16,6 @@ class App extends React.Component {
     this.state = {
       categories: [],
       categoriesLength: 0,
-      sliceStart: 0,
-      sliceEnd: 5,
       items: [],
       itemFormActive: false,
       cateFormActive: false,
@@ -123,23 +121,30 @@ class App extends React.Component {
     this.setState({
       filterVariable: cate
     })
-    if (cateIndex > 2) {
-      this.setState({
-        filterVariable: cate,
-        sliceStart: this.state.sliceStart + 1
-      })
-    } else if (cateIndex < 2) {
-      if (this.state.sliceStart === 0) {
-        this.setState({
-          sliceStart: this.state.categoriesLength
-        })
-      }
-      this.setState({
-        filterVariable: cate,
-        sliceStart: this.state.sliceStart - 1
-      })
-    }
   }
+
+  // // Den här funktionen behöver uppdateras
+  // categoryClick = (cate, cateIndex) => {
+  //   this.setState({
+  //     filterVariable: cate
+  //   })
+  //   if (cateIndex > 2) {
+  //     this.setState({
+  //       filterVariable: cate,
+  //       sliceStart: this.state.sliceStart + 1
+  //     })
+  //   } else if (cateIndex < 2) {
+  //     if (this.state.sliceStart === 0) {
+  //       this.setState({
+  //         sliceStart: this.state.categoriesLength
+  //       })
+  //     }
+  //     this.setState({
+  //       filterVariable: cate,
+  //       sliceStart: this.state.sliceStart - 1
+  //     })
+  //   }
+  // }
 
   // Callback function from filter input in Footer to be passed into ItemList
   filterItems = search => {
@@ -164,7 +169,7 @@ class App extends React.Component {
         <div className={`app-container ${this.state.homeMode ? "app-home-mode" : "app-shop-mode"} `}>
           <Header
             dbCategories={this.state.categories}
-            fiveCategories={fiveCategories}
+            // fiveCategories={fiveCategories}
             showCateForm={this.showCateForm}
             categoryClick={this.categoryClick}
             backgroundHome={this.state.homeMode} />
