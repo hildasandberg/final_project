@@ -55,31 +55,36 @@
 .header-cate-container {
   margin: auto;
   width: 80%;
-  height: 16vh;
+  max-height: 16vh;
   position: relative;
-  margin-top: 12vh;
+  margin-top: 10vh;
   margin-bottom: 2vh;
+  /* overflow: hidden; */
+}
+
+.one-cate {
+  text-align: center;
 }
 
 .one-cate p {
   font-size: 12px;
   display: block;
-  color: gray;
+  color: white;
 }
 
 .one-cate-image {
   background: white;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   margin: 5px;
-  padding: 10px;
+  padding: 5px;
   background-color: white;
   border-radius: 50%;
 }
 
 .one-cate-image img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
 .header-button-container {

@@ -21,16 +21,6 @@ export default class ItemForm extends React.Component {
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.dbCategories[0]) {
-  //     console.log("alla mina kategorier: ", this.props.dbCategories[0].name)
-  //     const cate = nextProps.dbCategories[0].name
-  //     const { addNewItem } = this.state
-  //     addNewItem.category = cate
-  //     this.setState({ addNewItem })
-  //   }
-  // }
-
   handleInput = event => {
     const { addNewItem } = this.state
     addNewItem[event.target.name] = event.target.value

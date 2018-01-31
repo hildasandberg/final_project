@@ -10,7 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())
 
-mongoose.connect("mongodb://localhost/shopper", { useMongoClient: true })
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/mongoLecture"
+mongoose.connect(mongoUrl, { useMongoClient: true })
+
+// Used when run on local storage
+// mongoose.connect("mongodb://localhost/shopper", { useMongoClient: true })
+
 mongoose.Promise = Promise
 mongoose.connection.on("error", err => console.error("Connection error:", err))
 mongoose.connection.once("open", () => console.log("Connected to mongodb"))
@@ -82,11 +87,7 @@ app.get("/items", (req, res) => {
   })
 })
 
-// Can be removed
-app.get("/", (req, res) =>
-  res.send("Hello World!")
-)
-// Can be removed
-app.listen(8080, () =>
-  console.log("Example app listening on port 8080!")
-)
+const port = process.env.PORT || 8080
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`)
+})

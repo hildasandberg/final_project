@@ -28,18 +28,20 @@ class Header extends React.Component {
   }
 
   render() {
-    let categories = []
-    if (this.props.fiveCategories) {
-      categories = this.props.fiveCategories
-    } else {
-      categories = this.props.dbCategories
-    }
+    // let categories = []
+    // if (this.props.fiveCategories) {
+    //   categories = this.props.fiveCategories
+    // } else {
+    //   categories = this.props.dbCategories
+    // }
 
     const settings = {
       infinite: true,
       speed: 500,
       slidesToShow: 5,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      focusOnSelect: true,
+      swipeToSlide: true
     }
 
     return (

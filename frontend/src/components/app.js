@@ -1,6 +1,6 @@
 import React from "react"
-import { BrowserRouter, Route, Link } from "react-router-dom"
-import { CSSTransitionGroup } from 'react-transition-group'
+import { BrowserRouter, Route } from "react-router-dom"
+import { CSSTransitionGroup } from "react-transition-group"
 import ItemForm from "components/form/itemForm.js"
 import CategoryForm from "components/form/categoryForm.js"
 import ChangeItemForm from "components/form/changeItemForm"
@@ -100,15 +100,30 @@ class App extends React.Component {
     })
   }
 
+  sorting = (a,b) => {
+    if (a.name < b.name) {
+      return -1
+    }
+    if (a.name > b.name ) {
+      return 1
+    }
+    return 0
+  }
+
+// const sortedItems = items.sort(sorting)
+
+
   // Don't know if this makes sense or not... Seems to be working...
   itemCheck = (itemIdentity, keyToUpdate) => {
     // console.log("tjena", itemIdentity, keyToUpdate)
     const foundItem = this.state.items.find(item => item._id === itemIdentity)
-    const foundItemIndex = this.state.items.findIndex(item => item._id === itemIdentity)
+    // const foundItemIndex = this.state.items.findIndex(item => item._id === itemIdentity)
+    const foundItemIndex = this.state.items.indexOf(foundItem)
     // console.log("denna blev checkad", foundItem, foundItem[keyToUpdate])
     // console.log("den har index", foundItemIndex)
     const itemsCopy = this.state.items
-    itemsCopy[foundItemIndex[keyToUpdate]] = foundItem[keyToUpdate]
+    itemsCopy[foundItemIndex][keyToUpdate] = foundItem[keyToUpdate]
+    // debugger
     this.setState({
       items: itemsCopy
     }, () => {
@@ -153,17 +168,21 @@ class App extends React.Component {
     })
   }
 
+  toggleEnterState = () => {
+    this.setState({ in: true });
+  }
+
   render() {
-    let fiveCategories = []
-    if (this.state.categoriesLength) {
-      if (this.state.categoriesLength >= 5) {
-        fiveCategories = this.state.categories.slice(
-          this.state.sliceStart,
-          this.state.sliceStart + this.state.sliceEnd
-        )
-        console.log("fem kategorier", fiveCategories)
-      }
-    }
+    // let fiveCategories = []
+    // if (this.state.categoriesLength) {
+    //   if (this.state.categoriesLength >= 5) {
+    //     fiveCategories = this.state.categories.slice(
+    //       this.state.sliceStart,
+    //       this.state.sliceStart + this.state.sliceEnd
+    //     )
+    //     console.log("fem kategorier", fiveCategories)
+    //   }
+    // }
     return (
       <BrowserRouter>
         <div className={`app-container ${this.state.homeMode ? "app-home-mode" : "app-shop-mode"} `}>
@@ -180,12 +199,15 @@ class App extends React.Component {
               showCateForm={this.showCateForm} />
           </div>
 
-          <div className={this.state.itemFormActive ? "active" : "inactive"}>
-            <ItemForm
-              dbCategories={this.state.categories}
-              gotNewItem={this.addNewItem}
-              showItemForm={this.showItemForm} />
-          </div>
+          {/* <CSSTransitionGroup> */}
+            {/* <div className={this.state.itemFormActive ? "active" : "inactive"}> */}
+            {this.state.itemFormActive && <ItemForm
+                dbCategories={this.state.categories}
+                gotNewItem={this.addNewItem}
+                showItemForm={this.showItemForm} />
+              }
+            {/* </div> */}
+          {/* </CSSTransitionGroup> */}
 
           <div className={this.state.changeItemFormActive ? "active" : "inactive"}>
             <ChangeItemForm
@@ -201,7 +223,7 @@ class App extends React.Component {
               <ItemList
                 {...routeProps}
                 mode="home-mode"
-                listItems={this.state.items}
+                listItems={this.state.items.sort(this.sorting)}
                 showItemForm={this.showItemForm}
                 showItemChangeForm={this.showItemChangeForm}
                 filterVariable={this.state.filterVariable}
@@ -216,7 +238,7 @@ class App extends React.Component {
               <ItemList
                 {...routeProps}
                 mode="shopping-mode"
-                listItems={this.state.items}
+                listItems={this.state.items.sort(this.sorting)}
                 showItemForm={this.showItemForm}
                 showItemChangeForm={this.showItemChangeForm}
                 filterVariable={this.state.filterVariable}
